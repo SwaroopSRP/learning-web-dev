@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #101010;
+    color: #f1f2f6;
+    font-family: "Onest", sans-serif;
+    font-optical-sizing: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem;
+    border-right: solid 1px #7f8c8d;
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    align-items: center;
+    overflow: hidden;
+}
+
+nav h1 {
+    box-sizing: border-box;
+    width: 15rem;
+    display: block;
+    position: absolute;
+    top: 1rem;
+    text-align: center;
+    border: 0.5rem solid white;
+    padding: 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    width: 15rem;
+    height: 2.75rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.nav-link:hover {
+    background-color: #3B3C40;
+}
+
+#login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: inherit;
+    color: #ffffff;
+    border: 0.2rem solid #f1f2f6;
+    border-radius: 50px;
+    width: 15rem;
+    height: 2.75rem;
+    font: inherit;
+}
+
+#login-btn:hover {
+    background-color: #f1f2f6;
+    color: #101010;
+}
+
+#signup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.2rem solid #f1f2f6;
+    border-radius: 50px;
+    width: 15rem;
+    height: 2.75rem;
+    font: inherit;
+}
+
+main {
+    position: relative;
+    width: 40%;
+    left: 30%;
+    text-align: justify;
+}
