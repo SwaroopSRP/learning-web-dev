@@ -1,0 +1,59 @@
+* {
+    font-family: "Adwaita Sans", sans-serif;
+    font-size: 1.1rem;
+}
+
+body {
+    background-color: #3B3C40;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+header {
+    text-align: center;
+}
+
+.card {
+    background-color: #abd0b2;
+    height: 25vh;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 1rem;
+    gap: 1rem;
+    color: #3B3C40;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input {
+    border: #77d044 2px solid;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+}
+
+button {
+    border: #77d044 2px solid;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    background-color: #77d044;
+    color: darkslategrey;
+    cursor: pointer;
+}
+
+button:hover {
+    border: darkolivegreen 2px solid;
+}
