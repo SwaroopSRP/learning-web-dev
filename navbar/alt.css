@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -9,7 +13,7 @@ body {
     padding: 0;
     height: 100vh;
     background-color: #101010;
-    color: #f1f2f6;
+    color: #ffffff;
     font-family: "Onest", sans-serif;
     font-optical-sizing: auto;
     display: flex;
@@ -17,14 +21,13 @@ body {
 }
 
 nav {
-    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 3rem;
     padding: 1rem;
     border-right: solid 1px #7f8c8d;
-    width: 15%;
+    max-width: 15%;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -34,20 +37,20 @@ nav {
 }
 
 nav h1 {
-    box-sizing: border-box;
-    width: 15rem;
-    display: block;
+
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
     position: absolute;
     top: 1rem;
     text-align: center;
-    border: 0.5rem solid white;
-    padding: 1rem;
+    border: 0.5rem solid #ffffff;
 }
 
 .nav-link {
     text-decoration: none;
     color: inherit;
-    width: 15rem;
+    width: 100%;
     height: 2.75rem;
     font-size: 1.5rem;
     display: flex;
@@ -60,40 +63,93 @@ nav h1 {
     background-color: #3B3C40;
 }
 
-#login-btn {
+#login-btn, #signup-btn {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    background-color: inherit;
-    color: #ffffff;
-    border: 0.2rem solid #f1f2f6;
+    border: 0.2rem solid #ffffff;
     border-radius: 50px;
-    width: 15rem;
+    width: 12rem;
     height: 2.75rem;
     font: inherit;
+}
+
+#login-btn {
+    background-color: inherit;
+    color: #ffffff;
+    transition: transform 0.2s ease, background-color 0.2s ease-in-out, color 0.2s ease;
 }
 
 #login-btn:hover {
-    background-color: #f1f2f6;
+    background-color: #ffffff;
     color: #101010;
+
 }
 
 #signup-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border: 0.2rem solid #f1f2f6;
-    border-radius: 50px;
-    width: 15rem;
-    height: 2.75rem;
-    font: inherit;
+    background-color: #ffffff;
+    color: #101010;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+#signup-btn:hover {
+    background-color: #dfe4ea;
 }
 
 main {
-    position: relative;
-    width: 40%;
-    left: 30%;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    flex: 1;
     text-align: justify;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    border: 0.3rem solid #ffffff;
+    border-radius: 1rem;
+    max-width: 25rem;
+    overflow: hidden;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 0.3rem solid #ffffff;
+    margin-bottom: 0;
+}
+
+.card-img {
+    max-width: 50%;
+    max-height: 50%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.card-bottom {
+    padding: 1rem;
+}
+
+.card-link {
+    display: block;
+    text-decoration: underline;
+    font-size: 1.3rem;
+    color: inherit;
+    width: 100%;
+}
+
+.dropdown {
+    display: none;
+    gap: 2rem;
+    align-items: center;
+    background-color: #03643c;
+}
+
+.card-bottom:hover .dropdown {
+    display: block;
+    position: absolute;
 }
