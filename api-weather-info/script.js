@@ -75,7 +75,7 @@ async function showOutput() {
 document.addEventListener("DOMContentLoaded", () => {
     DOM.queryBtn.addEventListener("click", showOutput);
 
-    DOM.queryBtn.addEventListener("keydown", (event) => {
+    DOM.inputBox.addEventListener("keydown", (event) => {
         if (event.key === "Enter") { showOutput(); };
     });
 });
