@@ -1,4 +1,4 @@
-const API_KEY = "41612739923a8c566822954c9ab823ba";
+const API_KEY = process.env.OWM_API_KEY;
 const DOM = {
     inputBox: document.getElementsByTagName("input")[0],
     queryBtn: document.getElementsByTagName("button")[0],
