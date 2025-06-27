@@ -6,4 +6,4 @@ A repo to keep track of all my builds (well, mostly trash) throughout my journey
 **[learning-js](https://github.com/SwaroopSRP/learning-js)**
 
 ## NOTE!
-All the JavaScript codebase and tracking would be in separate repository. This repo only holds the HTML + CSS content as well as micro-projects I create (incl. using JS). All the projects shall be indexed here though.
+All the JavaScript learning journey codebase, backend learning and tracking would be in separate repository. This repo only holds the HTML + CSS content as well as micro-projects I create (incl. using JS). All the projects shall be indexed here though.
