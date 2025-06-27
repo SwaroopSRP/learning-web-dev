@@ -1,4 +1,4 @@
-const API_KEY = localStorage.getItem(key);
+const API_KEY = localStorage.getItem("OWM_API_KEY");
 const DOM = {
     inputBox: document.getElementsByTagName("input")[0],
     queryBtn: document.getElementsByTagName("button")[0],
