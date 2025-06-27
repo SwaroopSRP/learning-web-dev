@@ -1,4 +1,4 @@
-const API_KEY = localStorage.getItem("OWM_API_KEY");
+const API_KEY = localStorage.getItem(key);
 const DOM = {
     inputBox: document.getElementsByTagName("input")[0],
     queryBtn: document.getElementsByTagName("button")[0],
@@ -49,28 +49,33 @@ function displayWeatherData(weatherData) {
     DOM.outputContent.classList.replace("hidden", "flex");
 }
 
+async function showOutput() {
+    const cityQuery = DOM.inputBox.value.trim();
+    DOM.inputBox.value = "";
+
+    if (!cityQuery) {
+        DOM.outputContent.classList.replace("flex", "hidden");
+        DOM.failMsg.classList.replace("flex", "hidden");
+
+        return;
+    }
+
+    try {
+        const output = await getWeatherData(cityQuery);
+
+        displayWeatherData(output);
+    } catch (err) {
+        DOM.outputContent.classList.replace("flex", "hidden");
+        DOM.failMsg.classList.replace("hidden", "flex");
+
+        console.error(err);
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    DOM.queryBtn.addEventListener("click", async () => {
-        const cityQuery = DOM.inputBox.value.trim();
-        DOM.inputBox.value = "";
+    DOM.queryBtn.addEventListener("click", showOutput);
 
-        if (!cityQuery) {
-            DOM.outputContent.classList.replace("flex", "hidden");
-            DOM.failMsg.classList.replace("flex", "hidden");
-
-            return;
-        }
-
-        try {
-            const output = await getWeatherData(cityQuery);
-
-            displayWeatherData(output);
-        } catch(err) {
-            DOM.outputContent.classList.replace("flex", "hidden");
-            DOM.failMsg.classList.replace("hidden", "flex");
-            
-            console.error(err);
-        }
+    DOM.queryBtn.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") { showOutput(); };
     });
 });
