@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content="Check real-time weather information for your city using OpenWeatherMap API."/>
+        <meta name="color-scheme" content="dark"/>
+        <link rel="stylesheet" href="./style.css"/>
+        <title>View Weather Info</title>
+    </head>
+    <body class="w-screen h-screen bg-emerald-950 font-sans text-white">
+        <header>
+            <h1 class="py-3 text-center text-7xl font-extrabold">Check Weather!</h1>
+            <hr class="w-3xl m-auto border-3 rounded-xs"/>
+        </header>
+        <main class="flex flex-col gap-5 justify-center items-center my-5">
+            <section class="flex flex-col justify-center gap-3 w-lg h-32 m-5 rounded-3xl bg-emerald-900 px-16">
+                <p class="text-3xl col-end-3">Enter a city name:<br/></p>
+                <div class="flex justify-center items-center">
+                    <input class="h-12 w-sm outline-none rounded-l-full border-2 border-emerald-800 hover:border-emerald-600 focus:border-emerald-700 transition-colors duration-250 bg-emerald-800 focus:bg-emerald-900 pl-4 pr-2" placeholder="eg: Bilaspur" type="text"/>
+                    <button class="flex items-center h-12 rounded-r-full border-2 border-emerald-800 hover:border-emerald-600 transition-colors duration-250 bg-emerald-800 active:bg-emerald-900 pl-2 pr-4 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                            <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+            <section class="w-2xl m-5 rounded-3xl bg-emerald-900">
+                <div id="output-content" class="hidden flex-row-reverse justify-center items-center gap-7 my-5">
+                    <div class="flex items-start text-6xl">
+                        <span id="temp-txt"></span>
+                        <span class="text-2xl ml-1 mt-1">°C</span>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M11.42 21.815a1.004 1.004 0 0 0 1.16 0C12.884 21.598 20.029 16.44 20 10c0-4.411-3.589-8-8-8S4 5.589 4 9.996c-.029 6.444 7.116 11.602 7.42 11.819zM12 4c3.309 0 6 2.691 6 6.004.021 4.438-4.388 8.423-6 9.731-1.611-1.308-6.021-5.293-6-9.735 0-3.309 2.691-6 6-6z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                <p>Place</p>
+                            </div>
+                            <p id="city-name-txt"></p>
+                        </div>
+                        <div class="flex items-center justify-between ">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M18.944 11.112C18.507 7.67 15.56 5 12 5 9.244 5 6.85 6.611 5.757 9.15 3.609 9.792 2 11.82 2 14c0 2.757 2.243 5 5 5h11c2.206 0 4-1.794 4-4a4.01 4.01 0 0 0-3.056-3.888zM18 17H7c-1.654 0-3-1.346-3-3 0-1.404 1.199-2.756 2.673-3.015l.581-.102.192-.558C8.149 8.274 9.895 7 12 7c2.757 0 5 2.243 5 5v1h1c1.103 0 2 .897 2 2s-.897 2-2 2z" />
+                                </svg>
+                                <p>Weather</p>
+                            </div>
+                            <p id="weather-desc-txt"></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M9 16a3.001 3.001 0 0 0 6 0c0-.353-.072-.686-.184-1H9.184A2.962 2.962 0 0 0 9 16z" />
+                                    <path d="M18 6V4h-3.185A2.995 2.995 0 0 0 12 2c-1.654 0-3 1.346-3 3v5.8A6.027 6.027 0 0 0 6 16c0 3.309 2.691 6 6 6s6-2.691 6-6a6.027 6.027 0 0 0-3-5.2V10h3V8h-3V6h3zm-4.405 6.324A4.033 4.033 0 0 1 16 16c0 2.206-1.794 4-4 4s-4-1.794-4-4c0-1.585.944-3.027 2.405-3.676l.595-.263V5a1 1 0 0 1 2 0v7.061l.595.263z" />
+                                </svg>
+                                <p>Feels Like</p>
+                            </div>
+                            <p id="feel-temp-txt"></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M12.578 2.184a1.004 1.004 0 0 0-1.156 0C11.119 2.398 4 7.513 4 13.75 4 18.53 7.364 22 12 22s8-3.468 8-8.246c0-6.241-7.119-11.356-7.422-11.57zM6 13.75c0-4.283 4.395-8.201 6-9.49V20c-3.533 0-6-2.57-6-6.25z" />
+                                </svg>
+                                <p>Humidity</p>
+                            </div>
+                            <p id="humidity-txt"></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M13 5.5C13 3.57 11.43 2 9.5 2 7.466 2 6.25 3.525 6.25 5h2c0-.415.388-1 1.25-1 .827 0 1.5.673 1.5 1.5S10.327 7 9.5 7H2v2h7.5C11.43 9 13 7.43 13 5.5zm2.5 9.5H8v2h7.5c.827 0 1.5.673 1.5 1.5s-.673 1.5-1.5 1.5c-.862 0-1.25-.585-1.25-1h-2c0 1.475 1.216 3 3.25 3 1.93 0 3.5-1.57 3.5-3.5S17.43 15 15.5 15z" />
+                                    <path d="M18 5c-2.206 0-4 1.794-4 4h2c0-1.103.897-2 2-2s2 .897 2 2-.897 2-2 2H2v2h16c2.206 0 4-1.794 4-4s-1.794-4-4-4zM2 15h4v2H2z" />
+                                </svg>
+                                <p>Wind Speed</p>
+                            </div>
+                            <p id="wind-speed-txt"></p>
+                        </div>
+                        <div class="flex items-center justify-between gap-20">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                                    <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                                    <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />
+                                </svg>
+                                <p>Last Updated</p>
+                            </div>
+                            <p id="fetch-time-txt"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="fail-msg" class="hidden gap-3 bg-[#5E4645] m-5 rounded-3xl px-7 py-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" style="fill: rgb(255, 77, 77)">
+                        <path d="M11 7h2v7h-2zm0 8h2v2h-2z"></path>
+                        <path d="m21.707 7.293-5-5A.996.996 0 0 0 16 2H8a.996.996 0 0 0-.707.293l-5 5A.996.996 0 0 0 2 8v8c0 .266.105.52.293.707l5 5A.996.996 0 0 0 8 22h8c.266 0 .52-.105.707-.293l5-5A.996.996 0 0 0 22 16V8a.996.996 0 0 0-.293-.707zM20 15.586 15.586 20H8.414L4 15.586V8.414L8.414 4h7.172L20 8.414v7.172z">
+                        </path>
+                    </svg>
+                    <div>
+                        <h2 class="text-4xl font-bold">Error!</h2>
+                        <p class="text-2xl">
+                            Failed while retrieving data. Possible reason could be connectivity error or invalid query.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="absolute bottom-0 w-screen h-10 flex flex-col justify-center items-center bg-green-900 py-10 text-lg">
+            <p>
+                Powered by
+                <a class="hover:underline" href="https://openweathermap.org/">OpenWeatherMap API</a>.
+            </p>
+            <p>&copy; 2025 — Built by SRP</p>
+        </footer>
+        <script type="text/javascript" src="./script.js"></script>
+    </body>
+</html>
