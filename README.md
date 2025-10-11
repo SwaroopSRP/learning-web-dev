@@ -44,3 +44,9 @@ These are present [here](https://github.com/SwaroopSRP/learning-web-dev/tree/mai
 - [Zenithic - Project Management Tool (Ongoing)](https://github.com/SwaroopSRP/zenithic-core)
 - [Krushi Sakha - Kerala Farmers' Assistant (Internal SIH 2025, Needs refinement and more progress)](https://github.com/SwaroopSRP/krushi-sakha-backend)
 
+---
+
+### React JS
+
+- [BG-Changer](https://github.com/SwaroopSRP/learning-web-dev/tree/main/react-micro-projects)
+
