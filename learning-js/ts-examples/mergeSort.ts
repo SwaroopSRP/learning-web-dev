@@ -48,6 +48,10 @@ function mergeSort<T extends Sortable>(arr: T[], left = 0, right = arr.length - 
 }
 
 
-const arr1 = [5, 2, 9, 1, 5, 6];
+let arr1: (number | string)[] = [5, 2, 9, 1, 5, 6];
 mergeSort(arr1, undefined, undefined, true);
+console.log(arr1);
+
+arr1 = ["Abhishek", "Amit", "Zara", "Shivam", "Karthik", "Shweta"];
+mergeSort(arr1);
 console.log(arr1);
